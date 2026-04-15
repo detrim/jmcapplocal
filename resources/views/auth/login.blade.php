@@ -93,13 +93,56 @@
                     </div>
 
                 </form>
+                <div class="alert alert-info mt-3 text-center">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalAkunDemo"
+                        class="text-decoration-underline fw-semibold">
+                        Klik lihat akun demo
+                    </a>
+                </div>
 
             </div>
         </div>
-    </div>
+        {{-- Info Akun Demo --}}
+        <div class="modal fade" id="modalAkunDemo" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
 
+                    <div class="modal-header">
+                        <h5 class="modal-title">Akun Demo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="p-3 border rounded bg-light">
+                            <div class="small">
+                                <p class="mb-1">
+                                    <strong>Super Admin</strong><br>
+                                    Username: superadmin <br>
+                                    Role: Admin <br>
+                                    Password: Password123
+                                </p>
+                                <hr class="my-2">
+                                <p class="mb-0">
+                                    <strong>Admin HRD</strong><br>
+                                    Username: adminhrd <br>
+                                    Role: Staf HRD <br>
+                                    Password: Password123
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Tutup
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
 <script>
     function togglePassword() {
