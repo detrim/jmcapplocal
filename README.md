@@ -85,7 +85,7 @@ bash
 
 ## Database Configuration
 
-- DB_CONNECTION=mariaDB  
+- DB_CONNECTION=mariadb  
 - DB_HOST=127.0.0.1  
 - DB_PORT=3306  
 - DB_DATABASE=nama_database_anda  
