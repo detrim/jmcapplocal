@@ -1,0 +1,90 @@
+@extends('layouts.app')
+
+@section('title', 'Detail User')
+
+@section('content')
+
+    <div class="container mt-4">
+        <h4 class="mb-3">Detail User</h4>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+
+                    {{-- Nama Pengguna --}}
+                    <div class="mb-3 col-md-6">
+                        <label class="fw-bold">Nama Pengguna</label>
+                        <div class="form-control">
+                            {{ $user->pegawai->nama ?? '-' }}
+                        </div>
+                    </div>
+
+                    {{-- Username --}}
+                    <div class="mb-3 col-md-6">
+                        <label class="fw-bold">Username</label>
+                        <div class="form-control">
+                            {{ $user->username }}
+                        </div>
+                    </div>
+
+                    {{-- Email --}}
+                    <div class="mb-3 col-md-6">
+                        <label class="fw-bold">Email</label>
+                        <div class="form-control">
+                            {{ $user->email }}
+                        </div>
+                    </div>
+
+                    {{-- Phone --}}
+                    <div class="mb-3 col-md-6">
+                        <label class="fw-bold">No HP</label>
+                        <div class="form-control">
+                            {{ $user->phone }}
+                        </div>
+                    </div>
+
+                    {{-- Role --}}
+                    <div class="mb-3 col-md-6">
+                        <label class="fw-bold">Role</label>
+                        <div class="form-control">
+                            @if ($user->role_id == 1)
+                                Admin
+                            @elseif ($user->role_id == 2)
+                                Manajer HRD
+                            @elseif ($user->role_id == 3)
+                                Staf HRD
+                            @else
+                                -
+                            @endif
+                        </div>
+                    </div>
+
+                    {{-- Status --}}
+                    <div class="mb-3 col-md-6">
+                        <label class="fw-bold">Status</label>
+                        <div class="form-control">
+                            @if ($user->is_active)
+                                <span class="badge bg-success">Aktif</span>
+                            @else
+                                <span class="badge bg-danger">Nonaktif</span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                {{-- Tombol --}}
+                <div class="mt-4">
+                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning">
+                        Edit
+                    </a>
+
+                    <a href="{{ route('user.index') }}" class="btn btn-secondary">
+                        Kembali
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+@endsection
