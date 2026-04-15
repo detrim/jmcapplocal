@@ -227,35 +227,22 @@
                 console.log(ids, status)
                 if (!confirm('Yakin ubah status?')) return;
                 let url = "{{ url('adminhrd/pegawai/bulkstatus') }}";
-                // $.ajax({
-                //     url: url,
-                //     type: "POST",
-                //     data: {
-                //         ids: ids,
-                //         status: status,
-                //         _token: "{{ csrf_token() }}"
-                //     },
-                //     success: function(res) {
-                //         alert(res.message);
-                //         location.reload();
-                //     }
-                // });
                 $.ajax({
                     url: url,
                     type: "POST",
-                    dataType: "json", // 🔥 penting
+                    dataType: "json",
                     data: {
                         ids: ids,
                         status: status,
                         _token: "{{ csrf_token() }}"
                     },
                     success: function(res) {
-                        console.log(res); // 🔥 cek isi JSON
+                        console.log(res); //  cek isi JSON
                         alert(res.message + " (" + res.total_user + " data)");
                         location.reload();
                     },
                     error: function(xhr) {
-                        console.log(xhr.responseText); // 🔥 kalau error
+                        console.log(xhr.responseText); // kalau error
                         alert('Terjadi error!');
                     }
                 });

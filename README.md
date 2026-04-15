@@ -121,11 +121,11 @@ bash
 ## 🛠 Role: Super Admin
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/detrim/img/main/img/superadmin/1.png" width="600"/>
+  <img src="https://raw.githubusercontent.com/detrim/img/main/img/superadmin/2.png" width="600"/>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/detrim/img/main/img/superadmin/2.png" width="600"/>
+  <img src="https://raw.githubusercontent.com/detrim/img/main/img/superadmin/1.png" width="600"/>
 </p>
 
 <p align="center">

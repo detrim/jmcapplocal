@@ -29,7 +29,7 @@
                             <div class="mb-3 position-relative">
                                 <label class="form-label">Nama Pengguna</label>
                                 <input type="text" id="nama_pengguna" class="form-control"
-                                    value="{{ $user->pegawai->nama ?? '' }}" placeholder="Ketik nama pegawai...">
+                                    value="{{ $user->pegawai->nama ?? '' }}" placeholder="Ketik nama pegawai..." required>
                                 <input type="hidden" name="pegawai_id" id="pegawai_id" value="{{ $user->pegawai_id }}">
                                 <div id="suggestion-box" class="list-group position-absolute w-100" style="z-index:999">
                                 </div>
@@ -40,7 +40,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Username</label>
                                 <input type="text" name="username" id="username" class="form-control"
-                                    value="{{ $user->username }}">
+                                    value="{{ $user->username }}" required>
                                 <small id="username_msg" class="text-danger"></small>
                             </div>
                         </div>

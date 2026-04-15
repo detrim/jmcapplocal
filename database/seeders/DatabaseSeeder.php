@@ -72,8 +72,8 @@ class DatabaseSeeder extends Seeder
             'status_kontrak' => 'kontrak',
             'usia' => 34,
             'pendidikan' => [
-                ['jenjang' => 'S1', 'jurusan' => 'Informatika', 'tahun' => 2012],
-                ['jenjang' => 'S2', 'jurusan' => 'Manajemen', 'tahun' => 2015]
+                ['jenjang' => 'S1', 'nama' => 'UMB', 'tahun' => 2012],
+                ['jenjang' => 'S2', 'nama' => 'UGM', 'tahun' => 2015]
             ]
         ]);
 
@@ -109,7 +109,7 @@ class DatabaseSeeder extends Seeder
             'status_kontrak' => 'kontrak',
             'usia' => 32,
             'pendidikan' => [
-                ['jenjang' => 'S1', 'jurusan' => 'Manajemen SDM', 'tahun' => 2014]
+                ['jenjang' => 'S1', 'nama' => 'UI', 'tahun' => 2014]
             ]
         ]);
 

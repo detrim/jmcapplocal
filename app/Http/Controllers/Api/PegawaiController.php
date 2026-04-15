@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 
-
 class PegawaiController extends Controller{
     public function search(Request $r)
     {
@@ -22,7 +21,6 @@ class PegawaiController extends Controller{
     public function checkusername(Request $r)
     {
         $exists = User::where('username', $r->username)->exists();
-
         return response()->json([
             'exists' => $exists
         ]);
@@ -48,12 +46,6 @@ class PegawaiController extends Controller{
                 }
             }
             return response()->json($result);
-            // return response()->json([
-            //     'status' => 'success',
-            //     'message' => 'Data kecamatan ditemukan',
-            //     'total' => count($result),
-            //     'data' => $result
-            // ]);
         }
         public function searchKabupaten(Request $request)
         {
@@ -74,7 +66,6 @@ class PegawaiController extends Controller{
                     ];
                 }
             }
-
             return response()->json($result);
         }
 }

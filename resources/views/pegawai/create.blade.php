@@ -82,7 +82,7 @@
                         <div class="col-md-4 mb-3 position-relative">
                             <label class="form-label">Tempat Lahir</label>
                             <input type="text" id="tempat_lahir" name="tempat_lahir" class="form-control"
-                                autocomplete="off" required>
+                                autocomplete="off">
                             <div id="kab-list" class="list-group position-absolute w-100 shadow"
                                 style="z-index:999; max-height:250px; overflow-y:auto;">
                             </div>
@@ -101,8 +101,7 @@
                         <!-- Alamat -->
                         <div class="col-md-4 mb-3 position-relative">
                             <label class="form-label">Kecamatan</label>
-                            <input type="text" id="kecamatan" name="kecamatan" class="form-control" autocomplete="on"
-                                required>
+                            <input type="text" id="kecamatan" name="kecamatan" class="form-control" autocomplete="on">
 
                             <div id="kec-list" class="list-group position-absolute w-100 shadow"
                                 style="z-index:999; max-height:250px; overflow-y:auto;">
@@ -110,14 +109,14 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <label class="form-label">Kabupaten</label>
-                            <input type="text" id="kabupaten" disabled class="form-control" required>
-                            <input type="hidden" id="kabupaten_val" name="kabupaten" class="form-control" required>
+                            <input type="text" id="kabupaten" disabled class="form-control">
+                            <input type="hidden" id="kabupaten_val" name="kabupaten" class="form-control">
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label class="form-label">Provinsi</label>
-                            <input type="text" id="provinsi" disabled class="form-control" required>
-                            <input type="hidden" id="provinsi_val" name="provinsi" class="form-control" required>
+                            <input type="text" id="provinsi" disabled class="form-control">
+                            <input type="hidden" id="provinsi_val" name="provinsi" class="form-control">
                         </div>
 
                         <div class="col-md-12 mb-3">

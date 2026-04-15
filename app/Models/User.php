@@ -41,7 +41,7 @@ class User extends Authenticatable
     }
 
 
-    // ✅ HELPER ROLE (biar bisa dipanggil langsung dari user)
+    // HELPER ROLE (biar bisa dipanggil langsung dari user)
     public function isSuperadmin()
     {
         return $this->role?->name === 'Superadmin';

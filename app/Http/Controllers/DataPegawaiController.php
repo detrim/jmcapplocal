@@ -34,7 +34,6 @@ class DataPegawaiController extends Controller
         })
         ->orderBy('created_at', 'desc')
         ->paginate(10);
-
     return view('pegawai.index', compact('pegawai'));
     }
     public function create()
@@ -70,7 +69,7 @@ class DataPegawaiController extends Controller
             if(empty($request->file('foto')) && !empty($request->oldFoto)){
                 $path = $request->oldFoto;
             }else{
-                if (!empty($pegawaiId)) {
+                if (!empty($pegawaiId) && !empty($request->oldFoto)) {
                     Storage::disk('public')->delete($request->oldFoto);
                     $image = $request->file('foto');
                 }else{
@@ -84,13 +83,16 @@ class DataPegawaiController extends Controller
                  // resize + compress
                  $img->resize(300, 300) // bisa ubah sesuai kebutuhan
                      ->toJpeg(70); // kualitas 70% (optimal)
-                 // ✅ encode ke string dulu
+                    // pastikan folder ada
+                    $pathFolder = public_path('storage/photos');
+                    if (!file_exists($pathFolder)) {
+                        mkdir($pathFolder, 0777, true);
+                    }
                  Storage::put('photos/' . $filename, $img->encode());
                  // path untuk disimpan ke DB
                  $path = 'photos/' . $filename;
             }
-
-       $status = $request->status;
+        $status = $request->status;
         $pendidikan = array_values($request->pendidikan);
         $data = [
             'foto' => $path,
@@ -115,10 +117,7 @@ class DataPegawaiController extends Controller
             'pendidikan' => $pendidikan,
             'status' =>$status,
         ];
-        // dd($data);
-// =========================
     // CREATE / UPDATE
-    // =========================
     if ($pegawai) {
         $pegawai->update($data);
         return $pegawai;
@@ -129,7 +128,6 @@ class DataPegawaiController extends Controller
     public function store(Request $request)
     {
         $this->savePegawai($request);
-
         return redirect()->route('pegawai.create')
             ->with('success', 'Data berhasil ditambahkan');
     }
@@ -150,9 +148,7 @@ class DataPegawaiController extends Controller
     public function update(Request $request, $id)
     {
         $pegawai = Pegawai::findOrFail($id);
-
         $this->savePegawai($request, $pegawai);
-
         return redirect()->route('pegawai.edit', $id)
             ->with('success', 'Data berhasil diupdate');
     }
@@ -174,22 +170,17 @@ class DataPegawaiController extends Controller
     public function downloadPdf($id)
     {
         $pegawai = Pegawai::findOrFail($id);
-
         $pendidikan = $pegawai->pendidikan;
-
         $pdf = Pdf::loadView('pegawai.pdf', compact('pegawai', 'pendidikan'))
             ->setPaper('A4', 'portrait');
-
         return $pdf->download('pegawai-' . $pegawai->nip . '.pdf');
     }
 
     public function exportPdf()
     {
         $pegawai = Pegawai::all();
-
         $pdf = Pdf::loadView('pegawai.export_pdf', compact('pegawai'))
             ->setPaper('A4', 'landscape');
-
         return $pdf->download('data-pegawai-export-' . Carbon::now()->format('Y-m-d') . '.pdf');
     }
 
@@ -243,30 +234,7 @@ class DataPegawaiController extends Controller
         Pegawai::whereIn('id', $ids)->delete();
         return response()->json([
             'status' => true,
-            'message' => 'Data pegawai & user berhasil dihapus'
+            'message' => 'Data pegawai dan user berhasil dihapus'
         ]);
     }
-    // public function delete(Request $request)
-    // {
-    //     $ids = $request->ids;
-    //     if (!$ids || !is_array($ids)) {
-    //         return response()->json([
-    //             'status' => false,
-    //             'message' => 'Tidak ada data dipilih'
-    //         ]);
-    //     }
-    //     $pegawais = Pegawai::whereIn('id', $ids)->get();
-    //     foreach ($pegawais as $pegawai) {
-    //         // HAPUS FOTO JIKA ADA
-    //         if ($pegawai->foto && Storage::disk('public')->exists($pegawai->foto)) {
-    //             Storage::disk('public')->delete($pegawai->foto);
-    //         }
-    //     }
-    //     // HAPUS DATABASE
-    //     Pegawai::whereIn('id', $ids)->delete();
-    //     return response()->json([
-    //         'status' => true,
-    //         'message' => 'Data & foto berhasil dihapus'
-    //     ]);
-    // }
 }

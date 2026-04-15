@@ -9,6 +9,7 @@ use App\Models\Pegawai;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class KelolaUserController extends Controller
 {
@@ -23,7 +24,6 @@ class KelolaUserController extends Controller
         } else {
             $users = User::where('employee_id', $nip)->paginate(10);
         }
-
         return view('user.index', compact('users'));
     }
 
@@ -47,6 +47,9 @@ class KelolaUserController extends Controller
     private function saveuser(Request $request,$Userid = null)
     {
         $user = $Userid ? User::findOrFail($Userid) : null;
+        $request->validate([
+           'username' => ['required', Rule::unique('users','username')->ignore($user)],
+        ]);
         // CEK PEGAWAI
         if ($request->pegawai_id) {
         $pegawai = Pegawai::findOrFail($request->pegawai_id);
@@ -75,12 +78,10 @@ class KelolaUserController extends Controller
     if ($request->filled('password')) {
         $data['password'] = Hash::make($request->password);
     }
-
     if ($user) {
         $user->update($data);
         return $user;
     }
-
         return User::create($data);
     }
 
