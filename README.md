@@ -90,7 +90,7 @@ bash
 - DB_PORT=3306  
 - DB_DATABASE=nama_database_anda  
 - DB_USERNAME=root  
-- DB_PASSWORD=
+- DB_PASSWORD=password_anda
 - FILESYSTEM_DISK=public
  ---
 # Screenshot Halaman
